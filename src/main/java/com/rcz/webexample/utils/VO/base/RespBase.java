@@ -1,4 +1,4 @@
-package com.rcz.webexample.utils.VO;
+package com.rcz.webexample.utils.VO.base;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
