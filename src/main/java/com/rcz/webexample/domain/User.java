@@ -12,67 +12,67 @@ import lombok.EqualsAndHashCode;
  * 用户信息
  */
 @EqualsAndHashCode(callSuper = true)
-@Schema(name = "用户信息")
+@Schema(description = "用户信息")
 @Data
 public class User extends BasePO {
 
-    @Schema(name = "用户编号")
+    @Schema(description = "用户编号")
     @TableField("user_no")
     private String userNo;
 
-    @Schema(name = "用户名")
+    @Schema(description = "用户名")
     @TableField("username")
     private String username;
 
-    @Schema(name = "昵称")
+    @Schema(description = "昵称")
     @TableField("nickname")
     private String nickname;
 
-    @Schema(name = "地址")
+    @Schema(description = "地址")
     @TableField("address")
     private String address;
 
-    @Schema(name = "头像")
+    @Schema(description = "头像")
     @TableField("avatar")
     private String avatar;
 
-    @Schema(name = "家庭编号")
+    @Schema(description = "家庭编号")
     @TableField("family_no")
     private String familyNo;
 
-    @Schema(name = "小区编号")
+    @Schema(description = "小区编号")
     @TableField("community_no")
     private String communityNo;
 
-    @Schema(name = "职业")
+    @Schema(description = "职业")
     @TableField("occupation")
     private String occupation;
 
-    @Schema(name = "政治面貌")
+    @Schema(description = "政治面貌")
     @TableField("political_outlook")
     private String politicalOutlook;
 
-    @Schema(name = "婚姻状况")
+    @Schema(description = "婚姻状况")
     @TableField("marital_status")
     private String maritalStatus;
 
-    @Schema(name = "性别")
+    @Schema(description = "性别")
     @TableField("gender")
     private String gender;
 
-    @Schema(name = "年龄")
+    @Schema(description = "年龄")
     @TableField("age")
     private int age;
 
-    @Schema(name = "手机号")
+    @Schema(description = "手机号")
     @TableField("phone")
     private String phone;
 
-    @Schema(name = "邮箱")
+    @Schema(description = "邮箱")
     @TableField("email")
     private String email;
 
-    @Schema(name = "备注")
+    @Schema(description = "备注")
     @TableField("remark")
     private String remark;
 
