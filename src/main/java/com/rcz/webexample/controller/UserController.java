@@ -3,6 +3,7 @@ package com.rcz.webexample.controller;
 import com.rcz.webexample.domain.User;
 import com.rcz.webexample.service.UserService;
 import com.rcz.webexample.utils.DTO.UserDTO;
+import com.rcz.webexample.utils.VO.ID;
 import com.rcz.webexample.utils.convert.UserConvert;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -15,7 +16,7 @@ import java.util.List;
 
 @Tag(name = "用户管理", description = "用户管理")
 @RestController
-//@CrossOrigin
+@CrossOrigin
 @RequestMapping("user")
 public class UserController {
 
@@ -40,6 +41,12 @@ public class UserController {
     public boolean add(@RequestBody @Validated UserDTO user) {
         User data = userConvert.convert(user);
         return userService.save(data);
+    }
+
+    @Operation(description = "删除用户", summary = "删除用户")
+    @RequestMapping(value = "delete", method = RequestMethod.POST)
+    public boolean delete(@RequestBody ID id) {
+        return userService.removeById(id.getId());
     }
 
 }
