@@ -2,6 +2,7 @@ package com.rcz.webexample.utils.DTO;
 
 import io.swagger.v3.oas.annotations.Hidden;
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
@@ -64,6 +65,7 @@ public class UserDTO {
     private String phone;
 
     @Size(max = 50, message = "邮箱长度不能超过50")
+    @Email(message = "邮箱格式不正确")
     @Schema(description = "邮箱")
     private String email;
 
