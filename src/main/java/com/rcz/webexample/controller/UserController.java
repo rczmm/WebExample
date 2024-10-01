@@ -4,6 +4,7 @@ import com.rcz.webexample.domain.User;
 import com.rcz.webexample.service.UserService;
 import com.rcz.webexample.utils.DTO.UserDTO;
 import com.rcz.webexample.utils.VO.ID;
+import com.rcz.webexample.utils.VO.UserVO;
 import com.rcz.webexample.utils.convert.UserConvert;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -32,8 +33,8 @@ public class UserController {
 
     @Operation(description = "获取用户列表",summary = "获取用户列表")
     @RequestMapping(value = "list", method = RequestMethod.GET)
-    public List<User> list() {
-        return userService.list();
+    public List<UserVO> list() {
+        return userConvert.convert(userService.list());
     }
 
     @Operation(description = "新增用户",summary = "新增用户")
