@@ -13,6 +13,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @Tag(name = "用户管理", description = "用户管理")
@@ -26,7 +27,8 @@ public class UserController {
     private final UserConvert userConvert;
 
     @Autowired
-    public UserController(UserService userService, UserConvert userConvert) {
+    public UserController(UserService userService,
+                          UserConvert userConvert) {
         this.userService = userService;
         this.userConvert = userConvert;
     }
@@ -34,7 +36,16 @@ public class UserController {
     @Operation(description = "获取用户列表",summary = "获取用户列表")
     @RequestMapping(value = "list", method = RequestMethod.GET)
     public List<UserVO> list() {
-        return userConvert.convert(userService.list());
+        List<UserVO> userList = userConvert.convert(userService.list());
+        Optional.ofNullable(userList)
+        .ifPresent(userList1 -> userList1.forEach(userVO -> {
+                            userVO.setNickname("******");
+                            userVO.setPhone("******");
+                            userVO.setEmail("******");
+                            userVO.setAvatar("******");
+                            userVO.setRemark("******");
+                        }));
+        return userList;
     }
 
     @Operation(description = "新增用户",summary = "新增用户")
