@@ -21,20 +21,22 @@ public class CommResponseBodyAdviceImpl implements ResponseBodyAdvice<Object> {
 
     @Override
     public Object beforeBodyWrite(Object body,
-                                            @NonNull MethodParameter returnType,
-                                            @NonNull MediaType selectedContentType,
-                                            @NonNull Class<? extends HttpMessageConverter<?>> selectedConverterType,
-                                            @NonNull ServerHttpRequest request,
-                                            @NonNull ServerHttpResponse response) {
+                                  @NonNull MethodParameter returnType,
+                                  @NonNull MediaType selectedContentType,
+                                  @NonNull Class<? extends HttpMessageConverter<?>> selectedConverterType,
+                                  @NonNull ServerHttpRequest request,
+                                  @NonNull ServerHttpResponse response) {
         // 获取当前请求的路径
         String path = request.getURI().getPath();
         // 检查请求路径是否是 Swagger 相关的路径
         boolean isSwaggerPath = path.startsWith("/swagger-ui") || path.startsWith("/v3/api-docs");
+
+        boolean isPagePath = path.startsWith("/page");
         // 如果是 Swagger 相关请求，则不进行拦截
-        if (isSwaggerPath) {
+        if (isSwaggerPath || isPagePath) {
             return body;
         }
-        if (body == null){
+        if (body == null) {
             return RespBase.fail("响应失败！");
         }
         return RespBase.success(body);
